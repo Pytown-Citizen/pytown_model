@@ -54,3 +54,5 @@ MANIFEST
 version.py
 
 requirements_dev.txt
+
+.scannerwork/
