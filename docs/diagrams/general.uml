@@ -1,0 +1,19 @@
+@startuml
+
+skinparam package {
+    backgroundColor<<this repository>> LightBlue
+} 
+
+package pytown_core
+package pytown_model <<this repository>>
+package pytown_client
+package pytown_server
+
+pytown_core <.. pytown_model
+pytown_core <.. pytown_client
+pytown_core <.. pytown_server
+pytown_model <.. pytown_client
+pytown_model <.. pytown_server
+
+@enduml
+
