@@ -43,7 +43,7 @@ This repository holds the model of pytown project
 
     - Clone the repo
     ```sh
-      git clone https://github.com/github_username/repo_name.git
+      git clone https://github.com/Pytown-Citizen/pytown_model.git
     ```
     - Install
     ```sh
