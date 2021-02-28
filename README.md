@@ -59,7 +59,7 @@ This repository holds the model of pytown project
 
 pytown_model is used by pytown_client and pytown_server
 
-![with Andrea's tip](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/Pytown-Citizen/pytown_model/main/docs/diagrams/general.uml)
+![Packages Overview](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/Pytown-Citizen/pytown_model/main/docs/diagrams/general.uml)
 
 
 <!-- ROADMAP -->
