@@ -7,7 +7,7 @@
 
 # Pytown Model
 ## Table of Contents
-1. [About the project](#abouttheproject)
+1. [Introduction](#introduction)
     - [Dependencies](#dependencies)
 2. [Getting Started](#gettingstarted)
     - [Prerequisites](#prerequisites)
@@ -19,7 +19,7 @@
 7. [Acknowledgements](#acknowledgements)
 
 <!-- ABOUT THE PROJECT -->
-## Introduction <a name="abouttheproject"></a>
+## Introduction <a name="introduction"></a>
 
 This repository holds the model of pytown project
 ### Dependencies <a name="dependencies"></a>
