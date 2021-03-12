@@ -531,7 +531,7 @@ class WakeUpCommand(ServerCommand):
         is_sleeping_check = CheckResult()
         AwakenCheck(player).check(is_sleeping_check)
 
-        if is_sleeping_check is False:
+        if not is_sleeping_check:
             self.check_result += "{} is already awake".format(player.name)
 
     def _do(self):
