@@ -528,10 +528,10 @@ class WakeUpCommand(ServerCommand):
 
         player = self.town.get_player(self.client_id)
 
-        is_sleeping_check = CheckResult()
-        AwakenCheck(player).check(is_sleeping_check)
+        is_awaken_check = CheckResult()
+        AwakenCheck(player).check(is_awaken_check)
 
-        if not is_sleeping_check:
+        if is_awaken_check:
             self.check_result += "{} is already awake".format(player.name)
 
     def _do(self):

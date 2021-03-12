@@ -6,7 +6,7 @@ from pytown_model.command import SleepCommand, WakeUpCommand
 from pytown_model.town import TownCreator
 
 
-class SleepCommand_test(unittest.TestCase):
+class SleepCommandTest(unittest.TestCase):
     def setUp(self):
         self.town = TownCreator.create_default_town(4, 4)
         self.player1 = Player(1, "Lis", 0, 0)
@@ -97,7 +97,7 @@ class SleepCommand_test(unittest.TestCase):
         self.assertEqual(self.player1.status, "sleep")
 
 
-class WakeUpCommand_test(unittest.TestCase):
+class WakeUpCommandTest(unittest.TestCase):
     def setUp(self):
 
         self.town = TownCreator.create_default_town(4, 4)
