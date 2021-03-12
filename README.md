@@ -3,8 +3,6 @@
 ![Python](https://img.shields.io/badge/python-3.7%20%7C%203.8-blue?style=plastic)
 ![License](https://img.shields.io/github/license/Pytown-Citizen/pytown_model?style=plastic)
 
-
-
 # Pytown Model
 ## Table of Contents
 1. [Introduction](#introduction)
@@ -33,19 +31,17 @@ This repository holds the model of pytown project
 - Installing [pip](https://pypi.org/project/pip/) is highly recommanded as it will facilitate installation steps
 ### Installation <a name="installation"></a>
 
-1. With pip
+- With pip
   - Install package
-  ```sh
-  pip install pytown_model @ git+ssh://git@github.com/Pytown-Citizen/pytown_model.git@0.0.1
-  ```
-
-2. From repository
-
-    - Clone the repo
+    ```sh
+    pip install pytown_model @ git+ssh://git@github.com/Pytown-Citizen/pytown_model.git@0.0.1
+    ```
+- From repository
+  - Clone the repo
     ```sh
       git clone https://github.com/Pytown-Citizen/pytown_model.git
     ```
-    - Install
+  - Install
     ```sh
       pip install .
     ```
@@ -61,6 +57,9 @@ pytown_model is used by pytown_client and pytown_server
 
 ![Packages Overview](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/Pytown-Citizen/pytown_model/main/docs/diagrams/general.uml)
 
+### Architecture
+
+![Architecture](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/Pytown-Citizen/pytown_model/main/docs/diagrams/model.uml)
 
 <!-- ROADMAP -->
 ## Roadmap <a name="roadmap"></a>

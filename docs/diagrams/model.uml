@@ -1,0 +1,154 @@
+@startuml
+
+class Town {
+    backgrounds : dict
+    buildings : dict
+    characters : dict
+    players : dict
+}
+
+class TownCreator {
+    create_default_town()
+    create_basic_town()
+}
+
+class Character {
+    name : string
+    direction : string
+
+    void status() : string
+}
+
+class Background {
+    name: string
+    building_allowed_list : list
+    move_multiplicator : float
+}
+
+class BackgroundCreator {
+    create_grass()
+    create_water()
+    create_road()
+    create_sand()
+}
+
+class Resource {
+    name: string
+    inventory : Inventory
+    building_allowed_list : list
+}
+
+class ResourceCreator {
+    create_forest()
+    create_golden_vein()
+    create_stone_vein()
+    create_forest()
+    create_iron_vein()
+}
+
+class Player {
+    player_id : int
+    velocity : float
+    x : float
+    y : float
+    inventory : Inventory
+    health : PlayerStatus
+    hunger : PlayerStatus
+    energy : PlayerStatus
+
+    do()
+    do_move_check()
+}
+
+class PlayerStatus {
+    value : int
+    value_max : int
+    regen_base : int
+    regen : int
+    regenerate()
+}
+
+class Inventory {
+    name : string
+    items_list : list
+
+    allow_items(Item)
+    is_full()
+    is_item_allowed(Item)
+    add_item(Item)
+    remove_item(Item)
+}
+
+class InventoryFactoryMethod {
+    {static} make_purse()
+    {static} make_backpack()
+    {static} make_warehouse()
+}
+
+
+class Item {
+    name : string
+    quantity : int
+    max_quantity : int
+}
+
+class FSM
+
+abstract class IState
+
+class Building
+
+class BuildingState {
+    name : string
+    inventory : Inventory
+    construction_inventory : Inventory
+    actions : list
+    building_processes : list
+    building_transactions : list
+} 
+
+class BuildingProcess {
+    name: string
+    item_required : Item
+    item_result : Item
+    energy_required : int    
+}
+
+class Action {
+    name : string
+}
+
+class BuildingTransaction {
+    item_name : string
+    buy_price : int
+    sell_price : int
+}
+
+abstract class BuildingFactory {
+    building : Building
+}
+
+Town <-- TownCreator : create
+Background <-- BackgroundCreator : create
+Town "1" *-- "*" Resource
+Resource <-- ResourceCreator : create
+Inventory <-- InventoryFactoryMethod : create
+Inventory "1" *-- "*" Item
+FSM "1" *-- "*" IState
+FSM <|-- Building
+IState <|-- BuildingState
+Building "1" *-- "*" BuildingState
+BuildingState "1" *-- "2" Inventory
+BuildingProcess "1" *-- "2" Item
+BuildingState "1" *-- "*" Action
+BuildingState "1" *-- "*" BuildingProcess
+BuildingState "1" *-- "*" BuildingTransaction
+Building <-- BuildingFactory : create
+Player *-- Inventory
+Town "1" *-- "*" Background
+Town "1" *-- "*" Character
+Character <|-- Player
+Player "1" *-- "3" PlayerStatus
+
+@enduml
+

@@ -213,7 +213,7 @@ class Town(IJSONSerializable):
 
 class TownCreator:
     @staticmethod
-    def createDefaultTown(tiles_nb_w, tiles_nb_h) -> Town:
+    def create_default_town(tiles_nb_w, tiles_nb_h) -> Town:
         town = Town("testown")
 
         town = TownCreator._initializetiles(town, tiles_nb_w, tiles_nb_h)

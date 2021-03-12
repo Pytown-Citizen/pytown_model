@@ -4,7 +4,7 @@ from pytown_model.town import TownCreator, Town
 
 class Town_test(unittest.TestCase):
     def setUp(self):
-        self.town = TownCreator.createDefaultTown(6, 4)
+        self.town = TownCreator.create_default_town(6, 4)
 
     def test_size(self):
         self.assertEqual(self.town.get_tiles_w(), 6)

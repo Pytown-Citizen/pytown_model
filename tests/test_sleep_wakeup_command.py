@@ -8,7 +8,7 @@ from pytown_model.town import TownCreator
 
 class SleepCommand_test(unittest.TestCase):
     def setUp(self):
-        self.town = TownCreator.createDefaultTown(4, 4)
+        self.town = TownCreator.create_default_town(4, 4)
         self.player1 = Player(1, "Lis", 0, 0)
         self.player2 = Player(2, "Mehdi", 1, 0)
         self.player3 = Player(3, "Celine", 0, 0)
@@ -100,7 +100,7 @@ class SleepCommand_test(unittest.TestCase):
 class WakeUpCommand_test(unittest.TestCase):
     def setUp(self):
 
-        self.town = TownCreator.createDefaultTown(4, 4)
+        self.town = TownCreator.create_default_town(4, 4)
         self.player1 = Player(1, "Lis", 0, 0)
 
     def test_status_back_to_idle(self):
