@@ -3,8 +3,6 @@
 ![Python](https://img.shields.io/badge/python-3.7%20%7C%203.8-blue?style=plastic)
 ![License](https://img.shields.io/github/license/Pytown-Citizen/pytown_model?style=plastic)
 
-
-
 # Pytown Model
 ## Table of Contents
 1. [Introduction](#introduction)
