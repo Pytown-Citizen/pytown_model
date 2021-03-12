@@ -76,9 +76,8 @@ class Player(Character):
         self.energy.regenerate()
 
     def do_move_check(self):
-        if self.status == "move":
-            if time.time() - self._move_internal_time > 0.1:
-                self.status = "idle"
+        if self.status == "move" and time.time() - self._move_internal_time > 0.1:
+            self.status = "idle"
 
     @classmethod
     def from_json_dict(cls, json_dict):

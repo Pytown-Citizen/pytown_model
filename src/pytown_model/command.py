@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-# import logging
 import math
 from abc import abstractmethod
 
@@ -9,7 +8,6 @@ from pytown_core.serializers import IJSONSerializable
 
 from .buildings import BuildingProcess, BuildingTransaction
 from .buildings.factory import BuildingFactory
-from .characters import Player
 from .check import (
     AvailableCheck,
     AwakenCheck,
@@ -213,11 +211,10 @@ class CollectResourceCommand(ServerCommand):
 
     def _check(self):
         player = self.town.get_player(self.client_id)
-        # tile = self.town.get_player_tile(self.client_id)
 
         AvailableCheck(player).check(self.check_result)
 
-        if not self._tile in self.town.resources:
+        if self._tile not in self.town.resources:
             self.check_result += "No resource in {}".format(self._tile)
             return
 
@@ -264,7 +261,7 @@ class BuildingProcessCommand(ServerCommand):
         player = self.town.get_player(self.client_id)
         AvailableCheck(player).check(self.check_result)
 
-        if not self._tile in self.town.buildings:
+        if self._tile not in self.town.buildings:
             self.check_result += "No building on {}".format(self._tile)
             return
 
@@ -491,9 +488,8 @@ class SleepCommand(ServerCommand):
         tile = self.town.get_player_tile(self.client_id)
 
         # Player not in building
-        if tile in self.town.buildings:
-            if self.town.buildings[tile].name != "cabane":
-                self.check_result += "Can't sleep in building"
+        if tile in self.town.buildings and self.town.buildings[tile].name != "cabane":
+            self.check_result += "Can't sleep in building"
 
     def _do(self):
 
@@ -505,9 +501,8 @@ class SleepCommand(ServerCommand):
         player.energy.regen = SleepCommand.ENERGY_REGEN_IN_GROUND
 
         # Change energy regeneration depending on where he sleeps
-        if tile in self.town.buildings:
-            if self.town.buildings[tile].name == "cabane":
-                player.energy.regen = SleepCommand.ENERGY_REGEN_IN_HOUSE
+        if tile in self.town.buildings and self.town.buildings[tile].name == "cabane":
+            player.energy.regen = SleepCommand.ENERGY_REGEN_IN_HOUSE
 
     def __repr__(self):
         msg = "Sleep command. Player id: {}".format(self.client_id)
@@ -533,10 +528,10 @@ class WakeUpCommand(ServerCommand):
 
         player = self.town.get_player(self.client_id)
 
-        is_sleeping_check = CheckResult()
-        AwakenCheck(player).check(is_sleeping_check)
+        is_awaken_check = CheckResult()
+        AwakenCheck(player).check(is_awaken_check)
 
-        if is_sleeping_check == False:
+        if is_awaken_check:
             self.check_result += "{} is already awake".format(player.name)
 
     def _do(self):

@@ -82,17 +82,17 @@ class InventoryAddCheck(Check):
         self._item = item
 
     def check(self, check_result: CheckResult):
-
         if self._item.quantity < 0:
             raise NegativeValueError(self, self._item)
 
         if self._inventory.is_item_allowed(self._item.name):
             for l_item in self._inventory.items_list:
-                if l_item.name == self._item.name:
-                    if l_item.max_quantity < l_item.quantity + self._item.quantity:
-                        check_result += "{} > {} max quantity".format(
-                            self._item.quantity, self._item.name
-                        )
+                if l_item.name == self._item.name and (
+                    l_item.max_quantity < l_item.quantity + self._item.quantity
+                ):
+                    check_result += "{} > {} max quantity".format(
+                        self._item.quantity, self._item.name
+                    )
         else:
             check_result += "{} not found in inventory".format(self._item.name)
 
@@ -109,13 +109,15 @@ class InventoryRemoveCheck(Check):
 
         if self._inventory.is_item_allowed(self._item.name):
             for l_item in self._inventory.items_list:
-                if l_item.name == self._item.name:
-                    if l_item.quantity < self._item.quantity:
-                        check_result += "not enough {} ({}) to remove {}".format(
-                            self._item.name,
-                            self._inventory.get_quantity(self._item.name),
-                            self._item.quantity,
-                        )
+                if (
+                    l_item.name == self._item.name
+                    and l_item.quantity < self._item.quantity
+                ):
+                    check_result += "not enough {} ({}) to remove {}".format(
+                        self._item.name,
+                        self._inventory.get_quantity(self._item.name),
+                        self._item.quantity,
+                    )
         else:
             check_result += "{} not found in inventory".format(self._item.name)
 
