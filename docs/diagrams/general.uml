@@ -1,11 +1,7 @@
 @startuml
 
-skinparam package {
-    backgroundColor<<this repository>> LightBlue
-} 
-
 package pytown_core
-package pytown_model <<this repository>>
+package pytown_model #LightBlue
 package pytown_client
 package pytown_server
 
